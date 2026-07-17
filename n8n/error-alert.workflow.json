@@ -1,0 +1,59 @@
+{
+  "name": "Theatre Reminder - Error Alert",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "b1b2c3d4-0001-4000-8000-000000000001",
+      "name": "On Error",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "YOUR_TELEGRAM_CHAT_ID",
+        "text": "=⚠️ *Theatre Reminder workflow failed*\n\nWorkflow: {{ $json.workflow.name }}\nError: {{ $json.execution.error.message }}\n\nCheck the n8n execution log — the daily Sabirni centar check did not complete.",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "b1b2c3d4-0002-4000-8000-000000000002",
+      "name": "Telegram - Failure Alert",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        60,
+        0
+      ],
+      "credentials": {
+        "telegramApi": {
+          "id": "REPLACE_WITH_YOUR_CREDENTIAL_ID",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "On Error": {
+      "main": [
+        [
+          {
+            "node": "Telegram - Failure Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {},
+  "active": false
+}
