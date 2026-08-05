@@ -16,7 +16,7 @@
       "parameters": {
         "resource": "message",
         "operation": "sendMessage",
-        "chatId": "YOUR_TELEGRAM_CHAT_ID",
+        "chatId": "534842390",
         "text": "=⚠️ *Theatre Reminder workflow failed*\n\nWorkflow: {{ $json.workflow.name }}\nError: {{ $json.execution.error.message }}\n\nCheck the n8n execution log — the daily Sabirni centar check did not complete.",
         "additionalFields": {
           "parse_mode": "Markdown"

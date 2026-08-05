@@ -179,7 +179,7 @@
       "parameters": {
         "resource": "message",
         "operation": "sendMessage",
-        "chatId": "YOUR_TELEGRAM_CHAT_ID",
+        "chatId": "534842390",
         "text": "=🎭 *{{ $json.foundItems[0].title }}* is scheduled in Jul/Aug!\n\n{{ $json.foundItems.map(i => `• ${i.month}-${i.day} at ${i.time} — ${i.soldOut ? 'SOLD OUT' : 'available'}`).join('\\n') }}\n\n{{ $json.allSoldOut ? '⚠️ All listed dates are already sold out — keep watching, more dates may be added.' : '🎟️ Book now before it sells out!' }}\n\n{{ $json.playUrl }}",
         "additionalFields": {
           "parse_mode": "Markdown"
@@ -204,7 +204,7 @@
       "parameters": {
         "resource": "message",
         "operation": "sendMessage",
-        "chatId": "YOUR_TELEGRAM_CHAT_ID",
+        "chatId": "534842390",
         "text": "=📋 Repertoire for Jul/Aug has been updated — still no *Sabirni centar* yet.\n\nWill keep checking daily at 19:00.\n\n{{ $json.playUrl }}",
         "additionalFields": {
           "parse_mode": "Markdown"

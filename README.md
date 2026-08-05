@@ -80,10 +80,9 @@ does mean that once other plays get added to July/August, you'll get a daily
 2. Also import `n8n/error-alert.workflow.json` (a separate small workflow that
    sends you a Telegram alert if the main workflow ever fails — e.g. if the
    site goes down or changes its HTML structure).
-3. In both workflows, open each **Telegram** node and:
-   - Create/select a Telegram credential using your bot token.
-   - Replace the placeholder `YOUR_TELEGRAM_CHAT_ID` in the `chatId` field
-     with your actual chat ID from step 1.3.
+3. In both workflows, open each **Telegram** node and create/select a
+   Telegram credential using your bot token. The `chatId` field is already
+   set to `534842390`.
 4. In the main workflow's **Settings**, set **Error Workflow** to
    "Theatre Reminder - Error Alert" so failures actually trigger the alert.
 5. Confirm the **Daily 19:00 Trigger** node's timezone matches yours
