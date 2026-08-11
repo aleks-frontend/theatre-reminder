@@ -28,7 +28,7 @@
             {
               "id": "c1",
               "name": "targetMonths",
-              "value": "[\"2026-07\",\"2026-08\"]",
+              "value": "[\"2026-08\",\"2026-09\",\"2026-10\"]",
               "type": "string"
             },
             {
@@ -55,7 +55,7 @@
         -160,
         0
       ],
-      "notes": "Single place to edit which months to watch. Update targetMonths (JSON array of \"YYYY-MM\" strings) once Jul/Aug fill up or when a new season needs checking."
+      "notes": "Single place to edit which months to watch. Update targetMonths (JSON array of \"YYYY-MM\" strings) once Aug/Sep/Oct fill up or when a new season needs checking."
     },
     {
       "parameters": {
@@ -124,7 +124,7 @@
         "options": {}
       },
       "id": "a1b2c3d4-0005-4000-8000-000000000005",
-      "name": "Any listings in Jul-Aug?",
+      "name": "Any listings in Aug-Oct?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
@@ -180,7 +180,7 @@
         "resource": "message",
         "operation": "sendMessage",
         "chatId": "534842390",
-        "text": "=🎭 *{{ $json.foundItems[0].title }}* is scheduled in Jul/Aug!\n\n{{ $json.foundItems.map(i => `• ${i.month}-${i.day} at ${i.time} — ${i.soldOut ? 'SOLD OUT' : 'available'}`).join('\\n') }}\n\n{{ $json.allSoldOut ? '⚠️ All listed dates are already sold out — keep watching, more dates may be added.' : '🎟️ Book now before it sells out!' }}\n\n{{ $json.playUrl }}",
+        "text": "=🎭 *{{ $json.foundItems[0].title }}* is scheduled in Aug/Sep/Oct!\n\n{{ $json.foundItems.map(i => `• ${i.month}-${i.day} at ${i.time} — ${i.soldOut ? 'SOLD OUT' : 'available'}`).join('\\n') }}\n\n{{ $json.allSoldOut ? '⚠️ All listed dates are already sold out — keep watching, more dates may be added.' : '🎟️ Book now before it sells out!' }}\n\n{{ $json.playUrl }}",
         "additionalFields": {
           "parse_mode": "Markdown"
         }
@@ -205,7 +205,7 @@
         "resource": "message",
         "operation": "sendMessage",
         "chatId": "534842390",
-        "text": "=📋 Repertoire for Jul/Aug has been updated — still no *Sabirni centar* yet.\n\nWill keep checking daily at 19:00.\n\n{{ $json.playUrl }}",
+        "text": "=📋 Repertoire for Aug/Sep/Oct has been updated — still no *Sabirni centar* yet.\n\nWill keep checking daily at 19:00.\n\n{{ $json.playUrl }}",
         "additionalFields": {
           "parse_mode": "Markdown"
         }
@@ -264,14 +264,14 @@
       "main": [
         [
           {
-            "node": "Any listings in Jul-Aug?",
+            "node": "Any listings in Aug-Oct?",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Any listings in Jul-Aug?": {
+    "Any listings in Aug-Oct?": {
       "main": [
         [
           {

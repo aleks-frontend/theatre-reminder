@@ -2,8 +2,8 @@
 
 Daily n8n automation that checks the Subotica National Theatre's repertoire page
 (https://www.suteatar.org/lat/repertoar) for the play **"Sabirni centar"** in
-July/August 2026, and pings a Telegram bot so tickets can be bought before they
-sell out.
+August/September/October 2026, and pings a Telegram bot so tickets can be
+bought before they sell out.
 
 ## How it works
 
@@ -28,7 +28,7 @@ The year-month is in the `work-item` class, the play is matched exactly via
 label. The parsing logic (in the `Parse Repertoire` Code node) was verified
 against a real snapshot of the page: it correctly found all 10 known
 "Sabirni centar" listings (March–June 2026) with correct sold-out status, and
-correctly found zero for July/August (currently empty, as expected).
+correctly found zero for August/September/October (currently empty, as expected).
 
 ## Workflow logic
 
@@ -36,7 +36,7 @@ correctly found zero for July/August (currently empty, as expected).
    `Europe/Belgrade` (set in workflow Settings — adjust if this isn't your
    timezone).
 2. **Config** — the *only* node you should need to edit later. Holds:
-   - `targetMonths`: `["2026-07","2026-08"]` — JSON array of `YYYY-MM` strings
+   - `targetMonths`: `["2026-08","2026-09","2026-10"]` — JSON array of `YYYY-MM` strings
      to check. Update this once these months fill up, or for a future season.
    - `playTitle`: `"Sabirni centar"`
    - `playUrl`: link included in Telegram messages
@@ -44,7 +44,7 @@ correctly found zero for July/August (currently empty, as expected).
    (the site may reject requests without one).
 4. **Parse Repertoire** — Code node that regex-parses the HTML, filters to
    `targetMonths`, and checks for an exact `playTitle` match.
-5. **Any listings in Jul-Aug?** — if both target months are still completely
+5. **Any listings in Aug-Oct?** — if all target months are still completely
    empty, the workflow stops silently (no Telegram message — nothing to
    report).
 6. **Sabirni centar found?** — branches to one of two Telegram messages:
@@ -59,7 +59,7 @@ correctly found zero for July/August (currently empty, as expected).
 run. This means both the "found" and "not found yet" messages repeat every
 day the underlying condition still holds. That's intentional (so you keep
 getting reminded until you've bought a ticket or the play is gone), but it
-does mean that once other plays get added to July/August, you'll get a daily
+does mean that once other plays get added to Aug/Sep/Oct, you'll get a daily
 "still not found" message until "Sabirni centar" itself shows up.
 
 ## Setup
@@ -94,7 +94,7 @@ does mean that once other plays get added to July/August, you'll get a daily
 - Temporarily set `Config.targetMonths` to `["2026-03"]` (known to contain
   five sold-out "Sabirni centar" showings) and manually execute the workflow
   to confirm the "found, sold out" Telegram message arrives correctly.
-- Set it back to `["2026-07","2026-08"]` and execute again — you should get
+- Set it back to `["2026-08","2026-09","2026-10"]` and execute again — you should get
   the "not found yet" message (current real state as of writing).
 - Temporarily break the URL in **Fetch Repertoire Page** to confirm the
   error-alert workflow fires.
